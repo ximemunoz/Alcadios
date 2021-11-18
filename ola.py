@@ -1,2 +1,1 @@
-ola kk 
-himeno esta tiesa
+import math
