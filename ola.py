@@ -7,4 +7,4 @@ dificil1= input ()
 print ("Dificultad jugador 2, 1-100")
 dificil2= input ()
 
-if 
+if (hello)
