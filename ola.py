@@ -2,6 +2,7 @@
 import math
 dificultad = 0
 jugador = 1
+hello = 2
 =======
 from random import randit
 jugador = 1
