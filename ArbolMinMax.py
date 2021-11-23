@@ -30,8 +30,8 @@ def MinMax(node, i_depth, i_playerNum):
     for i in range(len(node.children)):
         child = node.children[i]
         i_val = MinMax(child, i_depth-1, -i_playerNum)
-        if (abs(maxsize*i_playerNum-i_val)<abs(maxsize*i_playerNum - i_bestValue)):
-            i_bestValue = i_val
+        if (abs(maxsize*i_playerNum-i_val) < abs(maxsize*i_playerNum - i_bestValue)):
+            i_bestValue = i_val #Guardar el mejor valor encontrado
     return i_bestValue
 
 def WinCheck(i_beans, i_playerNum):
@@ -53,18 +53,18 @@ def WinCheck(i_beans, i_playerNum):
 
 if __name__ == '__main__':
   i_beansTotal = 11
-  i_depth = 4
-  i_curPlayer = 1
+  i_depth = 10
+  i_curPlayer = -1
   print("INSTRUCCIONES: Si eres el último en tomar frijoles cuando se acaben pierdes. Cada ronda deberás tomar entre 1-3 frijoles")
   while (i_beansTotal>0):
     print("\n%d Frijoles restantes. ¿Cuántos frijoles desea tomar?" %i_beansTotal)
-    i_choice = input("\n1, 2 or 3:")
+    i_choice = input("\n1, 2 o 3: ")
     i_beansTotal -= int(float(i_choice))
     if WinCheck(i_beansTotal,i_curPlayer):
       i_curPlayer *= -1 
       node = Node(i_depth,i_curPlayer, i_beansTotal)
       bestChoice = -100
-      i_bestValue = i_curPlayer * maxsize
+      i_bestValue = -i_curPlayer * maxsize
       #DETERMINAR EL NÚMERO DE FRIJOLES A QUITAR
       for i in range(len(node.children)):
         n_child = node.children[i]
@@ -76,4 +76,4 @@ if __name__ == '__main__':
       print("Comp chooses:" + str(bestChoice) + "\tBased on value: " + str(i_bestValue))
       i_beansTotal -= bestChoice
       WinCheck(i_beansTotal, i_curPlayer)
-      i_curPlayer *= -1
+      i_curPlayer *= 1
